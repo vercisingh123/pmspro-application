@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2d6cdf;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+.navbar-logo a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.navbar-links .login-btn {
+  background: #fff;
+  color: #2d6cdf;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 1rem;
+  transition: background 0.2s;
+}
+.navbar-links .login-btn:hover {
+  background: #e3edfa;
+}
