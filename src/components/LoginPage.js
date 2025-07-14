@@ -22,7 +22,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/send-otp-login', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/send-otp-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -50,7 +50,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/verify-otp-login', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/verify-otp-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp }),

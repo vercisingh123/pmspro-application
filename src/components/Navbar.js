@@ -9,7 +9,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
 
   // Logout handler
   const handleLogout = () => {
-    fetch("/api/auth/logout", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/auth/logout`, {
       method: "POST",
       credentials: "include",
     }).then(() => {

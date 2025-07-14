@@ -10,7 +10,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/api/auth/dashboard-data", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/auth/dashboard-data`, {
       credentials: "include",
     })
       .then((res) => {
@@ -28,7 +28,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
   }, [navigate, setIsAuthenticated]);
 
   const handleLogout = () => {
-    fetch("/api/auth/logout", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/auth/logout`, {
       method: "POST",
       credentials: "include",
     })

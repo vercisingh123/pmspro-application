@@ -18,7 +18,7 @@ function App() {
 
   // Check authentication status on app load
   useEffect(() => {
-    fetch("/api/auth/dashboard-data", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_API_URL}/api/auth/dashboard-data`, { credentials: "include" })
       .then((res) => {
         if (!res.ok) throw new Error();
         setIsAuthenticated(true);

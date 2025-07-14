@@ -15,7 +15,8 @@
   },
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "prod": "webpack --mode production && pm2 serve dist --port 3000 --name "
   },
   "eslintConfig": {
     "extends": [

@@ -1,98 +1,4 @@
 
-// import React, { useState } from 'react';
-// import { useNavigate, Link } from 'react-router-dom';
-// import "./SignupPage.css";
-
-// const googleLogo = "https://developers.google.com/identity/images/g-logo.png";
-// const githubLogo = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
-
-
-// const SignupPage = ({ setIsAuthenticated }) => {
-//   const [step, setStep] = useState('signup');
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [otp, setOtp] = useState('');
-//   const [error, setError] = useState('');
-//   const navigate = useNavigate();
-
-//   const handleSignup = async (e) => {
-//     e.preventDefault();
-//     setError('');
-//     const res = await fetch('/api/auth/send-otp-signup', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ name, email, password }),
-//     });
-//     const data = await res.json();
-//     if (data.message) setStep('verify');
-//     else setError(data.error || 'Signup failed');
-//   };
-
-//   const handleVerify = async (e) => {
-//     e.preventDefault();
-//     setError('');
-//     const res = await fetch('/api/auth/verify-otp-signup', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ email, otp }),
-//     });
-//     const data = await res.json();
-//     if (data.message) navigate('/login');
-//     else setError(data.error || 'Verification failed');
-//   };
-
-//   return (
-//     <div className="auth-container">
-//  <div className="oauth-buttons">
-//   <button
-//     className="oauth-btn google"
-//     onClick={() => window.location.href = "/api/auth/google"}
-//   >
-//     <img src={googleLogo} alt="Google" width={20} height={20} style={{ marginRight: 8 }} />
-//     Continue with Google
-//   </button>
-//   <button
-//     className="oauth-btn github"
-//     onClick={() => window.location.href = "/api/auth/github"}
-//   >
-//     <img src={githubLogo} alt="GitHub" width={20} height={20} style={{ marginRight: 8 }} />
-//     Continue with GitHub
-//   </button>
-// </div>
-
-//       {step === 'signup' ? (
-//         <form onSubmit={handleSignup}>
-//           <h2>Sign Up</h2>
-//           <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
-//           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
-//           <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-//           <button type="submit">Sign Up</button>
-       
-//           {error && <p className="error">{error}</p>}
-//             <p className="switch-link">
-//            Already registered? 
-//            <Link to="/login">Login</Link>
-//            </p>
-//         </form>
-//       ) : (
-//         <form onSubmit={handleVerify}>
-//           <h2>Verify OTP</h2>
-//           <input type="text" placeholder="Enter OTP" value={otp} onChange={e => setOtp(e.target.value)} required />
-//           <button type="submit">Verify</button>
-//           {error && <p className="error">{error}</p>}
-//          <p className="switch-link">
-//            Already registered?
-//              <Link to="/login">Login</Link>
-//           </p>     
-//         </form>
-
-//       )}
-//     </div>
-//   );
-// };
-
-// export default SignupPage;
 
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -119,7 +25,7 @@ const SignupPage = ({ setIsAuthenticated }) => {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/send-otp-signup', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/send-otp-signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
@@ -138,7 +44,7 @@ const SignupPage = ({ setIsAuthenticated }) => {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/verify-otp-signup', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/verify-otp-signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp }),
