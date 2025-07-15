@@ -11,6 +11,10 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/api/auth/dashboard-data`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
       credentials: "include",
     })
       .then((res) => {
