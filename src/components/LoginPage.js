@@ -26,6 +26,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
+        credentials: 'include',
       });
       const data = await res.json();
       if (data.error && data.error.includes('Account not verified')) {
@@ -54,6 +55,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp }),
+        credentials: 'include',
       });
       const data = await res.json();
       if (data.message === 'Authenticated') {
